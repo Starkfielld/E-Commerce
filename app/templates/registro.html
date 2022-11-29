@@ -1,0 +1,31 @@
+
+{% block content %}         
+
+<!--Register--> 
+<div>
+	<h1>Registro</h1>
+	<form method="POST">
+        {% csrf_token %}
+        <label for ="Fuser">Usuário:</label>
+        <br>
+        <input type ="text" id= 'username' name="username">
+        <br>
+        <label for ="Femail">Email:</label>
+        <br>
+        <input type ="text" id= 'email' name="email">
+        <br>
+        <label for ="Fsenha">Senha</label>
+        <br>
+        <input type ="password" id= 'password1' name="password1">
+        <br>
+        <label for ="Femail">Repita sua senha:</label>
+        <br>
+        <input type ="password" id= 'password2' name="password2">
+        <br>
+        <br>
+		<button type="submit">Registrar</button>
+	</form>
+	<p >Se já possuir uma conta, <a href="login">login</a></p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% block content %}    
+<!--Login--> 
+<div class="container py-5">
+    <h1>Login</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for ="Fuser">Usuário:</label>
+        <br>
+        <input type ="text" id= 'username' name="username">
+        <label for ="Fsenha">Senha</label>
+        <br>
+        <input type ="password" id= 'password1' name="password1">
+      <button type="submit">Login</button>
+    </form>
+    <p>Você já tem uma conta ? <a href="registro">Criar uma conta</a>.</p>
+  </div>
+  
+  {% endblock %}
