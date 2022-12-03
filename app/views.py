@@ -1,7 +1,7 @@
 from django.shortcuts import render ,redirect
 from django.views import View
 from .forms import NewUserForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm 
 
@@ -27,7 +27,7 @@ def registro_request(request):
                 user = form.save()
                 login(request, user)
                 messages.success(request, "Registrado com sucesso" )
-                return redirect("")
+                return render(request,'index.html')
             messages.error(request, "Erro ao registrar")
         form = NewUserForm()
         return render (request=request, template_name="registro.html", context={"register_form":form})
@@ -42,10 +42,15 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"Você está logado como: {username}.")
-				return redirect("")
+				return render(request,'index.html')
 			else:
 				messages.error(request,"Inválido usuário or senha.")
 		else:
 			messages.error(request,"Inválido usuário or senha.")
 	form = AuthenticationForm()
 	return render(request=request, template_name="login.html", context={"login_form":form})
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return render(request,'index.html')

@@ -7,5 +7,6 @@ urlpatterns = [
     path('Processador',Processador.as_view()),
     path('registro',registro_request),
     path("login",login_request),
-    path('gpu',gpu.as_view())
-]   
+    path('gpu',gpu.as_view()),
+    path("logout",logout_request, name= "logout"),
+]
